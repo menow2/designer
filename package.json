@@ -3,15 +3,10 @@
   "version": "0.0.1",
   "main": "dist/index.js",
   "scripts": {
-    "build": "webpack --config ./scripts/webpack.build.js",
-    "build-pub": "webpack --config ./scripts/webpack.build-publish.js",
     "dev": "webpack-dev-server --config ./scripts/webpack.dev.js",
-    "dev-pub": "webpack-dev-server --config ./scripts/webpack.dev-publish.js",
-    "xg": "webpack-dev-server --config ./scripts/webpack.xg.js",
-    "xg1": "webpack-dev-server --config ./scripts/webpack.xg1.js",
-    "xg-build": "webpack --config ./scripts/webpack.xg-build.js",
-    "c": "git add . && git-cz",
-    "clean": "rimraf ./src/*.js ./src/**/*.js ./src/**/**/*.js"
+    "build": "webpack --config ./scripts/webpack.build.js",
+    "_dev": "webpack-dev-server --config ./_scripts/webpack.dev.js",
+    "_build": "webpack --config ./_scripts/webpack.build.js"
   },
   "author": "CheMingjun",
   "license": "",

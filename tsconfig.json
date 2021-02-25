@@ -32,11 +32,8 @@
       "rxui": [
         "../../opensource-base/rxui"
       ],
-      "react": [
-        "../../demo-spa/node_modules/@types/react/index.d.ts"
-      ],
-      "react-dom": [
-        "../../demo-spa/node_modules/@types/react-dom/index.d.ts"
+      "@visualbricks/rxui": [
+        "../../opensource-base/rxui"
       ],
       "@visualbricks/designer": [
         "./src/index.ts"

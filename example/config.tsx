@@ -1,4 +1,4 @@
-import {getLocationSearch} from "../utils";
+import {getLocationSearch} from "./utils";
 
 const DUMP_IN_LS: string = '_app_designer_dump_';
 
@@ -8,7 +8,7 @@ export default {
   //mode:'dev',
   comlibAdder(): Promise<any> {//Demo
     return new Promise((resolve, reject): void => {
-      import('../../../bricks-logic').then(lib => {
+      import('../../bricks-logic').then(lib => {
         resolve(lib.default)
       })
     })
@@ -44,7 +44,7 @@ export default {
 
 function comlibLoader(): Promise<any> {
   return new Promise((resolve, reject): void => {
-    import('../../../bricks-logic').then(lib => {
+    import('../../bricks-logic').then(lib => {
       const libs = [lib.default]
       // const libs = [libInfo]
       try {
@@ -54,7 +54,7 @@ function comlibLoader(): Promise<any> {
         // }
 
 
-        const chartLib = require('../../../bricks-pc-normal')
+        const chartLib = require('../../bricks-pc-normal')
         if (chartLib) {
           libs.push(chartLib.default)
         }

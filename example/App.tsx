@@ -1,8 +1,7 @@
 import css from './App.less';
-import './reset-antd.css';
 
 import React, {useCallback, useMemo} from 'react';
-import {useObservable} from 'rxui';
+import {useObservable} from '@visualbricks/rxui';
 import {message} from 'antd';
 import Designer from '@visualbricks/designer';
 
@@ -19,12 +18,6 @@ type Action = {
 }
 
 export abstract class MyContext {
-  apiVisible: boolean = false
-
-  abstract desnApiAdder(): Promise<any>
-
-  abstract apiConfirm(params: any): void
-
   abstract save(): boolean
 }
 
@@ -34,10 +27,6 @@ export abstract class DesignerLoaded {
     editView: Action
     debugView: Action
   }
-
-  abstract importProject(content: { pageAry: {}[] }): boolean
-
-  abstract importComponent(content: { def, model }): boolean
 
   abstract dump(): {
     id: string,
@@ -51,12 +40,10 @@ export abstract class DesignerLoaded {
   }[]
 }
 
-export default function SPA() {
+export default function App() {
   const desnLoaded = useObservable(DesignerLoaded, {to: 'children'})
   const businessCtx = useObservable(MyContext, next => {
     return next({
-      apiVisible: false,
-      desnApiAdder: () => desnApiAdder(businessCtx),
       save() {
         const dumpContent = desnLoaded.dump()
 
@@ -80,7 +67,6 @@ export default function SPA() {
 //console.log(Math.random())
   }, [])
 
-  //配置快捷键
   useMemo(() => {
     Object.assign(designerCfg, {
       keymaps() {
@@ -109,22 +95,4 @@ export default function SPA() {
                 onMessage={onMessage}/>
     </div>
   )
-}
-
-function desnApiAdder(businessCtx: MyContext): Promise<any> {
-  return new Promise((resolve): void => {
-    businessCtx.apiVisible = true
-    businessCtx.apiConfirm = async function (params: any): Promise<void> {
-      // if (!params.data) {
-      //   message.warning('请选择要添加的接口', 1)
-      //   throw new Error('未选择接口')
-      // }
-
-      resolve(params.data)
-
-      setTimeout(() => {
-        businessCtx.apiVisible = false
-      })
-    }
-  })
 }
