@@ -3,6 +3,8 @@
 .DS_Store
 src/
 _scripts/
+scripts/
+config/
 examples/
 node_modules/*
 tags/*
