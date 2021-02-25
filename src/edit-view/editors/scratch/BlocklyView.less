@@ -1,0 +1,167 @@
+/**
+ * XGraph Opensource
+ * This source code is licensed under the MIT license.
+ *
+ * CheMingjun @2019
+ * Mail:chemingjun@126.com Wechat:ALJZJZ
+ */
+
+@import url('../../../theme');
+
+.workspace {
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+
+  .titleBar {
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #F3F3F3;
+    border-bottom: 1px solid #ddd;
+
+    .navBar {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .tt {
+        height: 100%;
+        line-height: 30px;
+        display: inline-block;
+        padding: 0px 12px 0px 20px;
+        margin-left: -8px;
+        background-color: #fff;
+        font-size: 12px;
+        cursor: pointer;
+
+        //&:nth-of-type(1) {
+        //  padding-right: 20px;
+        //  font-weight: 700 !important;
+        //}
+
+        &:nth-of-type(1) {
+          border-left: 1px solid #DDD;
+        }
+
+        &:nth-of-type(2) {
+          background-color: @color-primary;
+          color: #FFF;
+          font-weight: 700 !important;
+        }
+      }
+
+      .sper {
+        width: 16px;
+        height: 16px;
+        /* top: 7px; */
+        /* right: -22px; */
+        background-color: #ffffff;
+        transform: rotate(45deg) skew(20deg, 20deg);
+        margin-left: -8px;
+
+        &:nth-last-child(1) {
+          background-color: @color-primary;
+          border-width: 0px;
+        }
+      }
+
+      .menu {
+        position: absolute;
+        border: 1px solid #DDD;
+        background-color: #fff;
+        z-index: 100;
+        min-width: 220px;
+
+        .item {
+          height: 32px;
+          line-height: 32px;
+          padding: 0px 20px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #F3F3F3;
+          }
+
+          &:last-child {
+            border-top: 1px solid #EEE;
+          }
+        }
+      }
+
+      .btns {
+
+      }
+    }
+
+    .vars {
+      flex: 1;
+      height: 100%;
+      //border-left: 1px solid red;
+      display: flex;
+      //flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      overflow:hidden;
+
+      //.tt {
+      //  display: flex;
+      //  align-items: center;
+      //  padding: 0px 10px;
+      //  color: #555;
+      //}
+
+      .varsList {
+        flex: 1;
+        display: flex;
+        overflow: auto;
+        margin: 0px 5px;
+
+        .var {
+          height: 25px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          padding: 0px 12px;
+          font-weight: 700;
+          border-radius: 30px;
+          margin: 0px 3px;
+          background-color: @color-primary;
+          color: #fff;
+        }
+      }
+
+      .varAdd {
+        border: 1px solid #999;
+        border-radius: 5px;
+        font-weight: normal;
+        background: #fff;
+        color: #333;
+        margin: 0px 5px;
+        padding: 2px 5px;
+      }
+      .exImport {
+        border: 1px solid #999;
+        border-radius: 5px;
+        font-weight: 500;
+        background: rgb(248, 104, 20);
+        color: #FFF;
+        margin: 0px 5px;
+        padding: 2px 5px;
+      }
+    }
+  }
+
+
+  .main {
+    flex: 1;
+    width: 100%;
+  }
+}

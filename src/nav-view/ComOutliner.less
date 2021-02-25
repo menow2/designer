@@ -1,0 +1,212 @@
+/**
+ * XGraph Opensource
+ * This source code is licensed under the MIT license.
+ *
+ * CheMingjun @2019
+ * Mail:chemingjun@126.com Wechat:ALJZJZ
+ */
+
+@import '../theme';
+
+@titleBarHeight: 42px;
+@comItemHeight: 27px;
+
+.layout {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.inner {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 8px;
+  overflow: auto;
+}
+
+.titleBar {
+  width: 100%;
+  height: @titleBarHeight;
+  line-height: @titleBarHeight;
+  padding: 0 16px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 700;
+  border-bottom: 1px solid #EEE;
+  flex-shrink: 0;
+}
+
+.comList {
+  width: 100%;
+}
+
+.noRenderComList {
+  .comItem {
+    .comIcon {
+      opacity: .3;
+    }
+
+    .comName {
+      color: #c1a049;
+      font-style: italic !important;
+    }
+  }
+}
+
+.comItemBase {
+  cursor: pointer;
+  width: 100%;
+  height: @comItemHeight;
+  padding: 0 8px;
+  margin: 1px 0px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  // &:last-child {
+  //   margin-bottom: 0;
+  // }
+}
+
+.comItemHover {
+  &:hover {
+    //background-color: rgba(0, 0, 0, 0.1);
+    background-color: #D7D9DE;
+    //transition: background-color .2s linear;
+  }
+}
+
+.comItem {
+  .comItemBase;
+  .comItemHover;
+  //transition: background-color .2s linear;
+}
+
+.labelTodo {
+  outline: 1px dashed #A9CFDE;
+
+  &:after {
+    content: "Todo";
+    color: #FFF;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: italic;
+    z-index: 1;
+    width: 65px;
+    height: 20px;
+    line-height: 20px;
+    padding: 0px 8px;
+    overflow: hidden;
+    background: #03B6FC;
+    border-radius: 10px;
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+}
+
+.mocking {
+  border: 1px dashed #E02020;
+
+  &:after {
+    content: "Mock";
+    color: #FFF;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: italic;
+    z-index: 1;
+    width: 65px;
+    height: 20px;
+    line-height: 20px;
+    padding: 0px 8px;
+    overflow: hidden;
+    background: #E02020;
+    border-radius: 10px;
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+}
+
+.comItemActive {
+  .comItemBase;
+  border-color: @color-primary;
+  //background-color: rgba(0, 0, 0, 0.2);
+}
+
+.comItemHide {
+  color: #999;
+
+  .comIcon {
+    opacity: .3;
+  }
+}
+
+.extented {
+  .comName {
+    color: #efc358;
+
+    span {
+      padding-left: 5px;
+      color: #AAA;
+      font-style: italic !important;
+    }
+  }
+}
+
+.module{
+  .comName {
+    color: #ea8e51;
+
+    span {
+      padding-left: 5px;
+      color: #AAA;
+      font-style: italic !important;
+    }
+  }
+}
+
+.noUI {
+  .comName {
+    color: #c1a049;
+    font-style: italic !important;
+  }
+}
+
+.comIcon {
+  // width: 16px;
+  // height: 16px;
+  margin-right: 8px;
+  // background-image: url(@comIconUrl);
+  background-position: center center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  //background-color: #d8d8d8;
+  //border: 1px solid #979797;
+}
+
+.comItemContent {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.comInfoPadding {
+  padding-left: 8px;
+}
+
+.comName {
+  max-width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.comInfo {
+  width: max-content;
+  white-space: normal;
+  .comInfoPadding;
+}

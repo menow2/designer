@@ -1,0 +1,152 @@
+﻿/**
+ * XGraph Opensource
+ * This source code is licensed under the MIT license.
+ *
+ * CheMingjun @2019
+ * Mail:chemingjun@126.com Wechat:ALJZJZ
+ */
+
+@import '../theme';
+
+.slotContent {
+  position: inherit;
+  display: inherit;
+  flex: inherit;
+  width: inherit;
+  height: inherit;
+  min-height: inherit;
+  //border: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+}
+
+.slotDebug {
+  .slotContent;
+}
+
+.slot {
+  width: 100%;
+  height: 100% !important;
+  pointer-events: auto !important;
+  position: relative !important;
+
+  //&:hover {
+  //  .title {
+  //    display: block;
+  //  }
+  //}
+
+  > .geo-item > div {
+    pointer-events: auto !important;
+    //position: inherit !important;
+  }
+
+  .title {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0px;
+    z-index: 1000;
+    background: #fff;
+    border: 1px solid #DDD;
+    border-top: 0px;
+    border-radius: 0px 0px 5px 5px;
+    padding: 0px 2px;
+    height: 18px;
+
+    p {
+      transform: scale(0.84) translateY(-5%);
+      font-style: italic;
+      color: #999;
+    }
+  }
+
+  .placeholder {
+    height: 10px;
+    background-color: @color-primary;
+  }
+}
+
+.focus {
+  //background-color: palevioletred !important;
+  box-shadow: inset 0px 7px 50px 2px #ddd, inset 0px -12px 19px -19px #ddd;
+}
+
+.desn {
+  outline: 1px dashed #DDD;
+  outline-offset: -1px;
+  //padding:1px;
+  //margin: 1px;
+  //background: rgba(0, 0, 0, 0.06);
+  background: rgba(253, 247, 166, 0.1);
+  .slotContent;
+}
+
+.empty {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center;
+  //background: transparent;
+
+  &:before {
+    content: attr(data-title);
+    //content: "\62D6\62FD\7EC4\4EF6\5230\8FD9\91CC";
+    font-style: italic;
+    color: #DDD;
+    font-size: 12px;
+    z-index: 1;
+    padding: 3px;
+    width: 100%;
+    height: 20px;
+    overflow: hidden;
+  }
+}
+
+.hover {
+  box-shadow: inset 0px 7px 50px 2px #ddd, inset 0px -12px 19px -19px #ddd;
+}
+
+.lyFlexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.lyFlexRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.justifyContentFlexStart {
+  justify-content: flex-start;
+}
+
+.justifyContentFlexCenter {
+  justify-content: center;
+}
+
+.justifyContentFlexFlexEnd {
+  justify-content: flex-end;
+}
+
+.justifyContentFlexSpaceAround {
+  justify-content: space-around;
+}
+
+.justifyContentFlexSpaceBetween {
+  justify-content: space-between;
+}
+
+.alignItemsFlexStart {
+  align-items: flex-start;
+}
+
+.alignItemsFlexCenter {
+  align-items: center;
+}
+
+.alignItemsFlexFlexEnd {
+  align-items: flex-end;
+}
