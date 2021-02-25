@@ -1,7 +1,7 @@
 /**
  * XGraph Opensource
  * This source code is licensed under the MIT license.
- * 
+ *
  * CheMingjun @2019
  * Mail:chemingjun@126.com Wechat:ALJZJZ
  */
@@ -194,17 +194,7 @@ export default function Designer({config, onLoad, onMessage, onEdit}: T_Params) 
       }
     }
 
-    if (typeof config.keymaps === "function") {
-      const maps = config.keymaps()
-      keyMaps = Object.assign(keyMaps, maps)
-    }
-
     document.addEventListener('paste', function (evt) {
-      /**
-       * @description 编辑Scratch的时候，监听到粘贴事件阻止执行相应的逻辑
-       * @author 梁李昊
-       * @time 2021/02/10
-       * **/
       if (!myContext.showNavView) return
       const tag = evt.target as HTMLElement;
       if (tag.tagName.match(/INPUT|TEXTAREA/gi)
@@ -228,7 +218,7 @@ export default function Designer({config, onLoad, onMessage, onEdit}: T_Params) 
             snap.commit()
           } catch (ex) {
             console.error(ex)
-            emitLogs.error('复制发生错误',ex.message)
+            emitLogs.error('复制发生错误', ex.message)
             snap.cancel()
           }
         }
@@ -269,7 +259,22 @@ export default function Designer({config, onLoad, onMessage, onEdit}: T_Params) 
         }
       }
 
-      const fn = keyMaps[evtKey]
+      let nkeyMaps = {}
+
+      if (typeof config.keymaps === "function") {
+        const maps = config.keymaps()
+        if(typeof maps==='object'){
+          const nms = Object.getOwnPropertyNames(maps)
+          nms.forEach(nm=>{
+            nkeyMaps[nm] = maps[nm]
+          })
+        }
+        Object.assign(nkeyMaps, keyMaps)
+      } else {
+        nkeyMaps = keyMaps
+      }
+
+      const fn = nkeyMaps[evtKey]
       if (typeof fn == "function") {
         fn()
         event.preventDefault()
@@ -301,7 +306,7 @@ export default function Designer({config, onLoad, onMessage, onEdit}: T_Params) 
 
   const classNames = useComputed(() => {
     const rtn = [css.designer]
-    if(desnContext.isShowModelFullScreen()){
+    if (desnContext.isShowModelFullScreen()) {
       rtn.push(css.fullScreen)
     }
     if (!myContext.showEditView) {
@@ -366,7 +371,7 @@ function genLoadedObj(designerContext: DesignerContext, myContext: MyContext) {
         }
       },
       debugView: {
-        get isEnable(){
+        get isEnable() {
           return true
         },
         get isTrue() {

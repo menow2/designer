@@ -1,7 +1,7 @@
 /**
  * XGraph Opensource
  * This source code is licensed under the MIT license.
- * 
+ *
  * CheMingjun @2019
  * Mail:chemingjun@126.com Wechat:ALJZJZ
  */
@@ -62,7 +62,7 @@ export default function Normal({mouseDown}) {
       //model.style.width = '100%'//100% width///TODO temp
       //model.style.display = 'block'
 
-      /** 
+      /**
        * 布局问题，组件样式设置
        * **/
       if (realEle && model.style.width === void 0) {
@@ -75,14 +75,14 @@ export default function Normal({mouseDown}) {
         } else if (nowWidth === model.parent.$el.offsetWidth) {
           model.style.width = '100%'//100% width
           model.style.display = 'block'
-          
+
         }
-          /**
-           * @description 修复画布区域设置padding后，导致的组件宽度问题
-           * @author 朱鹏强
-           * @time 2021/02/24
-           * **/
-          else if (nowWidth === getContentWidth(model.parent.$el)) {
+        /**
+         * @description 修复画布区域设置padding后，导致的组件宽度问题
+         * @author 朱鹏强
+         * @time 2021/02/24
+         * **/
+        else if (nowWidth === getContentWidth(model.parent.$el)) {
           model.style.width = '100%'
           model.style.display = 'block'
         } else {
@@ -525,13 +525,13 @@ function getEdtAreaEle(targetEle, comContext: ComContext): {
  * @author 朱鹏强
  * @time 2021/02/24
  * **/
-function getContentWidth (ele: HTMLElement) {
+function getContentWidth(ele: HTMLElement) {
   const width = parseFloat(getComputedStyle(ele).width)
   let contentWidth = width
   const paddingLAndR = ['Left', 'Right']
   paddingLAndR.forEach(item => {
     contentWidth -= parseFloat(getComputedStyle(ele)[`padding${item}`])
   })
-  
+
   return contentWidth
 }

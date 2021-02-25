@@ -11,9 +11,10 @@
   "author": "CheMingjun",
   "license": "",
   "dependencies": {
-    "@visualbricks/rxui": "1.0.0",
-    "@ant-design/icons": "^4.3.0",
-    "antd": "^4.3.0",
+    "@ant-design/icons": "^4.5.0",
+    "@visualbricks/compiler-js": "^0.0.3",
+    "@visualbricks/rxui": "1.0.1",
+    "antd": "^4.12.3",
     "react-color": "^2.19.3"
   },
   "devDependencies": {

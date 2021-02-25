@@ -79,6 +79,9 @@ export default function GeoCom({model, slot}: { model: GeoComModel, slot: string
     return <ExceptionCom model={model} type='error'
                          msg={`未找到组件(${model.runtime.def.namespace}@${model.runtime.def.version})定义.`}/>
   }
+  if ((comDef.rtType && !comDef.rtType.match(/^react|vue$/gi))) {
+    return null
+  }
 
   if (context.isDebugMode()) {
     return <NormalDebug/>

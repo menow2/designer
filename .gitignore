@@ -7,4 +7,5 @@ tags/*
 .history
 .vscode/
 .tmp/
+_scripts/
 package-lock.json

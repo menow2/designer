@@ -7,14 +7,6 @@ const ignoreWarningPlugin = require('./ignoreWarningPlugin')
 module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
-    alias: {//for prod
-      //'@hb/spa-designer': require('path').resolve(__dirname, '../src'),
-      // 'rxui': require('path').resolve(__dirname, '../node_modules/@hb/rxui'),
-      // 'antd': require('path').resolve(__dirname, '../node_modules/antd'),
-      '@ant-design/icons': require('path').resolve(__dirname, '../node_modules/@ant-design/icons/'),
-      'xgraph.compiler': require('path').resolve(__dirname, '../node_modules/@hb/xgraph.compiler'),
-      'xgraph.designer-spa': require('path').resolve(__dirname, '../node_modules/@hb/xgraph.designer-spa'),
-    }
   },
   module: {
     rules: [

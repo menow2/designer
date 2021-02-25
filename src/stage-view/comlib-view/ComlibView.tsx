@@ -50,8 +50,8 @@ export default function ComlibView({load, stageModel}) {
     myCtx.show = true
   })
 
-  const parent = document.getElementsByClassName(designerStyle.designer)[0]
-  return createPortal(<RenderPanel/>, parent)
+  //const parent = document.getElementsByClassName(designerStyle.designer)[0]
+  return createPortal(<RenderPanel/>, document.body)
 }
 
 function RenderPanel() {

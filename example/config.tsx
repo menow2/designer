@@ -1,11 +1,7 @@
 import {getLocationSearch} from "./utils";
-
-const DUMP_IN_LS: string = '_app_designer_dump_';
-
-const searchParam = getLocationSearch()
+import {DUMP_IN_LS} from "./constants";
 
 export default {
-  //mode:'dev',
   comlibAdder(): Promise<any> {//Demo
     return new Promise((resolve, reject): void => {
       import('../../bricks-logic').then(lib => {
@@ -15,8 +11,6 @@ export default {
   },
   comlibLoader,
   pageLoader,
-  //extComDef,//扩展组件定义
-  //extBlocks: blocks,
   stage: {//舞台
     type: 'pc',//mobile|pc
     configs: {//聚焦空白区域的configs
@@ -46,14 +40,7 @@ function comlibLoader(): Promise<any> {
   return new Promise((resolve, reject): void => {
     import('../../bricks-logic').then(lib => {
       const libs = [lib.default]
-      // const libs = [libInfo]
       try {
-        // const testLib = require('../libs/normal');
-        // if (testLib) {
-        //   libs.push(testLib.default)
-        // }
-
-
         const chartLib = require('../../bricks-pc-normal')
         if (chartLib) {
           libs.push(chartLib.default)
@@ -68,8 +55,8 @@ function comlibLoader(): Promise<any> {
 
 function pageLoader(pageId: string) {
   return new Promise((resolve, reject): void => {
-    //const searchParam = getLocationSearch()
-    // const isDev = [null, undefined].indexOf(getSearchParams('dev'));
+    const searchParam = getLocationSearch()
+
     if (searchParam.length) {
       let pageData: any = localStorage.getItem(`${DUMP_IN_LS}${searchParam}`);
 

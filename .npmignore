@@ -2,7 +2,8 @@
 .idea/
 .DS_Store
 src/
-build/
+_scripts/
+examples/
 node_modules/*
 tags/*
 .history

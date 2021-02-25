@@ -1,98 +1,105 @@
 import css from './App.less';
 
-import React, {useCallback, useMemo} from 'react';
-import {useObservable} from '@visualbricks/rxui';
+import React, {useCallback} from 'react';
 import {message} from 'antd';
 import Designer from '@visualbricks/designer';
 
 import designerCfg from './config'
-import {TitleBar} from "./coms";
 
 import {getLocationSearch} from "./utils";
-
-const DUMP_IN_LS: string = '_app_designer_dump_';
-
-type Action = {
-  isTrue: boolean
-  exe: () => void
-}
-
-export abstract class MyContext {
-  abstract save(): boolean
-}
-
-export abstract class DesignerLoaded {
-  actions: {
-    navView: Action
-    editView: Action
-    debugView: Action
-  }
-
-  abstract dump(): {
-    id: string,
-    // pageId: string,
-    isActive: boolean,
-    props: {
-      isHome: boolean
-    },
-    title: string,
-    content: { [name: string]: {} }
-  }[]
-}
+import {useState} from "React";
+import {DUMP_IN_LS} from "./constants";
 
 export default function App() {
-  const desnLoaded = useObservable(DesignerLoaded, {to: 'children'})
-  const businessCtx = useObservable(MyContext, next => {
-    return next({
-      save() {
-        const dumpContent = desnLoaded.dump()
-
-        const searchParam = getLocationSearch()
-        localStorage.setItem(`${DUMP_IN_LS}${searchParam.length ? getLocationSearch() : 'dev'}`, JSON.stringify(dumpContent));
-        message.info('保存完成.')
-      }
-    })
-  }, {to: 'children'})
-
-  const designerLoadFn = useCallback((loaded) => {
-    Object.assign(desnLoaded, loaded)
-  }, [])
+  const [loaded, setLoaded] = useState({
+    actions: void 0,
+    dump: void 0
+  })
 
   const onMessage = useCallback((type, msg) => {
     message.destroy()
     message[type](msg)
   }, [])
 
-  const onEdit = useCallback((event, content) => {
-//console.log(Math.random())
-  }, [])
 
-  useMemo(() => {
-    Object.assign(designerCfg, {
-      keymaps() {
-        return {
-          ['ctrl+s']() {
-            businessCtx.save()
+  Object.assign(designerCfg, {
+    keymaps() {
+      return {
+        get ['ctrl+s']() {
+          return () => {
+            save(loaded)
           }
         }
       }
-    })
-  }, [])
+    }
+  })
 
   return (
-    <div className={css.mainView} onClick={e => {
-      const popups = document.querySelectorAll('.' + css.popup)
-      if (popups) {
-        popups.forEach(ele => {
-          ele.classList.remove(css.popup)
-        })
-      }
-    }}>
-      <TitleBar/>
+    <div className={css.mainView}>
+      <TitleBar loaded={loaded}/>
       <Designer config={designerCfg}
-                onLoad={designerLoadFn}
-                onEdit={onEdit}
+                onLoad={loaded => setLoaded(loaded)}
                 onMessage={onMessage}/>
     </div>
   )
+}
+
+function TitleBar({loaded}) {
+  let navBtn, editBtn, debugBtn
+
+  if (loaded.actions) {
+    let actions = loaded.actions
+    if (actions.navView) {
+      navBtn = (
+        <button onClick={actions.navView.exe}>
+          {actions.navView.isTrue ? '<' : '>'}
+        </button>
+      )
+    }
+
+    if (actions.editView) {
+      editBtn = (
+        <button style={{float: 'right'}} onClick={actions.editView.exe}>
+          {actions.editView.isTrue ? '>' : '<'}
+        </button>
+      )
+    }
+
+    if (actions.debugView) {
+      debugBtn = (
+        <button style={{backgroundColor: 'red'}}
+                disabled={!actions.debugView.isEnable} onClick={actions.debugView.exe}>
+          {actions.debugView.isTrue ? '编辑' : '调试'}
+        </button>
+      )
+    }
+  }
+
+  return (
+    <div className={css.titleBar}>
+      <div className={css.logo}>
+        <i>VisualBricks-Demo</i>
+      </div>
+      <div className={css.btnsLeft}>
+        {navBtn}
+      </div>
+      <div className={css.btnsHandlers}>
+
+      </div>
+      <div className={css.btnsRight}>
+        <button onClick={() => save(loaded)}>保存</button>
+        {debugBtn}
+        {/*<button onClick={publish}>发布</button>*/}
+        {editBtn}
+      </div>
+    </div>
+  )
+}
+
+function save(loaded) {
+  const dumpContent = loaded.dump()
+
+  const searchParam = getLocationSearch()
+  localStorage.setItem(`${DUMP_IN_LS}${searchParam.length ? getLocationSearch() : 'dev'}`, JSON.stringify(dumpContent));
+  message.info('保存完成.')
 }
