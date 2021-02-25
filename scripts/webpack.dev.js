@@ -3,9 +3,9 @@ const merge = require("webpack-merge")
 const commonCfg = require('./webpack.common')
 
 module.exports = merge(commonCfg, {
-  entry: path.resolve(__dirname, '../example/main.js'),
+  entry: path.resolve(__dirname, '../examples/main.js'),
   output: {
-    path: path.resolve(__dirname, '../example'),
+    path: path.resolve(__dirname, '../examples'),
     filename: './bundle.js',
     libraryTarget: 'umd'
   },
@@ -33,7 +33,7 @@ module.exports = merge(commonCfg, {
   },
   devServer: {
     port: 8000,
-    contentBase: path.join(__dirname, '../example'),
+    contentBase: path.join(__dirname, '../examples'),
     disableHostCheck: true,
     //progress: true,
     inline: true

@@ -1,8 +1,4 @@
-﻿const webpack = require('webpack')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-
-// const {VueLoaderPlugin} = require('vue-loader');
-const ignoreWarningPlugin = require('./ignoreWarningPlugin')
+﻿const ignoreWarningPlugin = require('./ignoreWarningPlugin')
 
 module.exports = {
   resolve: {
@@ -17,13 +13,12 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: [
-                '@babel/preset-react'  // jsx支持
-                //['@babel/preset-env', { useBuiltIns: 'usage', corejs: 2 }] // 按需使用polyfill
+                '@babel/preset-react'
               ],
               plugins: [
-                ['@babel/plugin-proposal-class-properties', {'loose': true}] // class中的箭头函数中的this指向组件
+                ['@babel/plugin-proposal-class-properties', {'loose': true}]
               ],
-              cacheDirectory: true // 加快编译速度
+              cacheDirectory: true
             }
           }
         ]
@@ -39,8 +34,7 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: [
-                '@babel/preset-react'  // jsx支持
-                //['@babel/preset-env', { useBuiltIns: 'usage', corejs: 2 }]
+                '@babel/preset-react'
               ],
               plugins: [
                 ['@babel/plugin-proposal-class-properties', {'loose': true}]
