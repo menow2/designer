@@ -19,14 +19,13 @@ module.exports = merge(commonCfg, {
     'blockly': 'Blockly',
     'blocks': 'blocks',
     '@ant-design/icons': '@ant-design',
-    'axios': 'axios',
-    'lodash': {commonjs: "lodash", commonjs2: "lodash", amd: "lodash", root: "_"},
-    'moment': 'moment'
+    'lodash': {commonjs: "lodash", commonjs2: "lodash", amd: "lodash", root: "_"}
   }],
   devtool: 'cheap-source-map',//devtool: 'cheap-source-map',
   resolve: {
     alias: {
       '@visualbricks/designer': require('path').resolve(__dirname, '../src/index.ts'),
+      //'@visualbricks/designer': require('path').resolve(__dirname, '../dist/index.js'),
       '@sdk': require('path').resolve(__dirname, '../src/sdk.ts'),
       '@utils': require('path').resolve(__dirname, '../src/utils/index.ts'),
     }
