@@ -1,4 +1,4 @@
-# VisualBricks Designer
+# @visualbricks/designer
 
 > 通用无代码设计器
 >
