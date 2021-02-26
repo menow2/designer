@@ -33,4 +33,4 @@ yarn run dev
 
 ## 🔗 链接/文档
 
-- [首页](https://ant.design/)
+- [首页](https://xgraph.cn/)
