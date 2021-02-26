@@ -34,3 +34,6 @@ yarn run dev
 ## 🔗 链接/文档
 
 - [首页](https://xgraph.cn/)
+- [设计器使用文档](https://xgraph.cn/)
+- [所有组件](https://xgraph.cn/)
+- [组件开发文档](https://xgraph.cn/)
