@@ -8,7 +8,7 @@
 
 import {FunctionComponent} from "react";
 import ComStyle from "./ComStyle";
-import {I_Connection, I_Frame, I_Node, I_Pin} from "@visualbricks/compiler-js";
+import {I_Connection, I_Frame, I_Node, I_Pin} from "@mybricks/compiler-js";
 import BaseModel from "./BaseModel";
 
 

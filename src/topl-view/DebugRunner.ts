@@ -8,7 +8,7 @@
 
 import {ToplViewContext} from "./frame/ToplView";
 import {PinModel} from "./pin/PinModel";
-import {compile, createIO, I_Frame, I_Joint, I_Node, I_Pin, I_Runner} from "@visualbricks/compiler-js";
+import {compile, createIO, I_Frame, I_Joint, I_Node, I_Pin, I_Runner} from "@mybricks/compiler-js";
 import {exeStepTime, PinExtInputs} from "./config";
 import ToplViewModel from "./frame/ToplViewModel";
 import {ToplComModel} from "./com/ToplComModel";

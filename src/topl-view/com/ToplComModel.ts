@@ -11,7 +11,7 @@ import {Arrays, deepClone} from '@utils'
 
 import FrameModel from '../frame/FrameModel'
 
-import {E_ItemType, I_Node} from '@visualbricks/compiler-js';
+import {E_ItemType, I_Node} from '@mybricks/compiler-js';
 import {clone, Ignore, Serializable} from 'rxui';
 import {BaseModel, ComSeedModel, NS_Emits, T_PinSchema, T_XGraphComDef} from '@sdk';
 import {SerializeNS} from '../constants';

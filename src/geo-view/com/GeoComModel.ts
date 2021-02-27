@@ -14,7 +14,7 @@ import GeoViewModel from '../slot/GeoViewModel';
 import {ComSeedModel, NS_Configurable, NS_Emits, NS_Listenable} from '@sdk';
 import {SerializeNS} from '../constants';
 import css from "./normal/Normal.less";
-import {UNDEFINED_FRAME_LABEL} from "@visualbricks/compiler-js";
+import {UNDEFINED_FRAME_LABEL} from "@mybricks/compiler-js";
 import GeoComDebugModel = require('./GeoComDebugModel');
 import I_Configurable = NS_Configurable.I_Configurable;
 import I_Listenable = NS_Listenable.I_Listenable;

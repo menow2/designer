@@ -13,7 +13,7 @@ import {Arrays, canConnectTo, getPosition, randomNum} from '@utils'
 
 import ToplBaseModel from '../ToplBaseModel';
 
-import {E_ItemType} from '@visualbricks/compiler-js'
+import {E_ItemType} from '@mybricks/compiler-js'
 import {BaseModel, ComSeedModel, I_FrameModel, I_PinModel, T_PinSchema} from '@sdk';
 import {clone, ignore, Ignore, Serializable} from 'rxui';
 import {SerializeNS} from '../constants';

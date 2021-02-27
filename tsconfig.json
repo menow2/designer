@@ -32,13 +32,13 @@
       "rxui": [
         "../../opensource-base/rxui"
       ],
-      "@visualbricks/rxui": [
+      "@mybricks/rxui": [
         "../../opensource-base/rxui"
       ],
-      "@visualbricks/designer": [
+      "@mybricks/designer": [
         "./src/index.ts"
       ],
-      "@visualbricks/compiler-js": [
+      "@mybricks/compiler-js": [
         "../../opensource-base/compiler-js/index.ts"
       ]
     }

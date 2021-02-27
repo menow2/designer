@@ -12,9 +12,9 @@
   "author": "CheMingjun",
   "license": "",
   "dependencies": {
-    "@visualbricks/compiler-js": "^0.0.3",
-    "@visualbricks/rxui": "1.0.1",
     "@ant-design/icons": "^4.5.0",
+    "@mybricks/compiler-js": "^0.0.1",
+    "@mybricks/rxui": "1.0.0",
     "antd": "^4.12.3",
     "react-color": "^2.19.3"
   },

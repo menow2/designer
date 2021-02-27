@@ -8,7 +8,7 @@
 
 import {clone, Ignore, observable, Serializable} from 'rxui';
 import ToplBaseModel from '../ToplBaseModel';
-import {E_ItemType} from '@visualbricks/compiler-js';
+import {E_ItemType} from '@mybricks/compiler-js';
 import FrameModel from '../frame/FrameModel';
 import {PinModel} from '../pin/PinModel';
 import {calJontPoints} from '../ToplUtil';

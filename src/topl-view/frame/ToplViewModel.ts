@@ -8,7 +8,7 @@
 
 import FrameModel from './FrameModel';
 
-import {I_Frame, I_Pin, I_Runner} from '@visualbricks/compiler-js';
+import {I_Frame, I_Pin, I_Runner} from '@mybricks/compiler-js';
 import {ToplComModel} from '../com/ToplComModel';
 import {clone, Ignore, Serializable} from 'rxui';
 import {SerializeNS, VIEW_TOPL_NAME} from '../constants';
