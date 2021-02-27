@@ -1,4 +1,4 @@
-# @visualbricks/designer
+# @mybricks/designer
 
 > 通用无代码设计器
 >

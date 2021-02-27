@@ -7,6 +7,7 @@
  */
 
 import Text from './text'
+import RichText from './richtext'
 import InputNumber from './inputNumber'
 import Button from './button'
 import Textarea from './textarea'
@@ -26,6 +27,7 @@ import {NS_EditorsDefault} from "@sdk";
 const editors = {}
 
 reg(NS_EditorsDefault.TEXT, Text)
+reg(NS_EditorsDefault.RICHTEXT, RichText)
 reg(NS_EditorsDefault.INPUTNUMBER, InputNumber)
 reg(NS_EditorsDefault.BUTTON, Button)
 reg(NS_EditorsDefault.TEXTAREA, Textarea)

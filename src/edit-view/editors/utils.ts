@@ -35,3 +35,34 @@ export function getCurrentNodeByClassName(e: any, cn: string): any {
     return getCurrentNodeByClassName(e.parentNode || e.target.parentNode, cn)
   }
 }
+
+export function hasScripts(src: string, doc = document) {
+  let bool = false
+  const scripts = doc.getElementsByTagName('script')
+  for (let i=0; i<scripts.length; i++) {
+    if (scripts[i].src === src) {
+      bool = true
+    }
+  }
+
+  return bool
+}
+
+export function loadScript(src: string, varName: string) {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = src;
+    script.onload = function() {
+      resolve(window[(varName as any)]);
+    };
+    document.head.appendChild(script);
+    // document.body.appendChild(script);
+    // (function (script) {
+    //   script.onload = function () {
+    //     alert('loaded.');
+    //     resolve(window[(varName as any)]);
+    //   }
+    // })(script);
+  })
+}

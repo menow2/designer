@@ -1,6 +1,6 @@
 {
-  "name": "@visualbricks/designer",
-  "version": "1.0.1",
+  "name": "@mybricks/designer",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
     "dev": "webpack-dev-server --config ./scripts/webpack.dev.js",

@@ -14,6 +14,7 @@ export const EDITOR_ROOT_SELECTOR = `:root`
 
 export namespace NS_EditorsDefault {
   export const TEXT = 'TEXT'
+  export const RICHTEXT = 'RICHTEXT'
   export const INPUTNUMBER = 'INPUTNUMBER'
   export const BUTTON = 'BUTTON'
   export const TEXTAREA = 'TEXTAREA'
