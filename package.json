@@ -6,7 +6,8 @@
     "dev": "webpack-dev-server --config ./scripts/webpack.dev.js",
     "build": "webpack --config ./scripts/webpack.build.js",
     "_dev": "webpack-dev-server --config ./_scripts/webpack.dev.js",
-    "_build": "webpack --config ./_scripts/webpack.build.js"
+    "_build": "webpack --config ./_scripts/webpack.build.js",
+    "_buildExamples": "webpack --config ./_scripts/webpack.build-examples.js"
   },
   "author": "CheMingjun",
   "license": "",

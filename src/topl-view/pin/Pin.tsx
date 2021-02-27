@@ -8,7 +8,7 @@
 
 import {PinModel} from './PinModel';
 import {dragable, observe, useComputed, useObservable} from 'rxui';
-import {canConnectTo, getPosition} from '@utils';
+import {getPosition} from '@utils';
 import {ConModel} from '../con/ConModel';
 import {DesignerContext, NS_Configurable, NS_Emits} from '@sdk';
 import FrameModel from '../frame/FrameModel';
@@ -285,9 +285,9 @@ function connect(from: PinModel, snap) {
         // if (viewContext.config?.connectionValidate === false) {
         //   conInfo = true
         // }
-        if (conInfo === void 0) {
-          conInfo = canConnectTo(from, to)
-        }
+        // if (conInfo === void 0) {
+        //   conInfo = canConnectTo(from, to)
+        // }
 
         const con = toContainer.addConnection(
           ConModel.create(from, {

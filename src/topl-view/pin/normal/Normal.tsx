@@ -115,9 +115,6 @@ export default function Normal({click, mousedown, help}) {
       <div data-xg-topl-type='pin-title' className={css.pinTitle} style={style0}>
         <p style={{float: model.isDirectionOfInput() ? 'right' : null}}>
           <span className={css.title}>{model.title}</span>
-          {showHelp ?
-            (<span className={css.help} onClick={evt(help).stop}>帮助</span>)
-            : null}
         </p>
       </div>
       {/*<div className={css.fixTitle}>*/}

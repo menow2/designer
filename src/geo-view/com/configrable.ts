@@ -1,7 +1,7 @@
 /**
  * XGraph Opensource
  * This source code is licensed under the MIT license.
- * 
+ *
  * CheMingjun @2019
  * Mail:chemingjun@126.com Wechat:ALJZJZ
  */
@@ -11,6 +11,7 @@ import {ComContext} from "./GeoCom";
 import {antiShaking} from "@utils";
 import RenderItem = NS_Configurable.RenderItem;
 import Group = NS_Configurable.Group;
+import {EDITOR_ROOT_SELECTOR} from "../../constants";
 
 //Record for current active editor array
 let activeEditorAry = []
@@ -212,7 +213,7 @@ export function get(comContext: ComContext) {
     comGroup = new NS_Configurable.Group();
     comCategary.addGroup(comGroup)
 
-    const edtAry = createEdtAry(comContext, hostEle, hostEle, {'*': true})
+    const edtAry = createEdtAry(comContext, hostEle, hostEle, {[EDITOR_ROOT_SELECTOR]: true})
     if (edtAry) {
       const [ary, zoneTitle] = edtAry
 
@@ -311,7 +312,7 @@ function createEdtItem(comContext: ComContext, editor: any, ele) {
               return initVal
             }
           }, set(v, opt?: { ele, state: 'ing' | 'finish' }) {
-            if(context.isDebugMode()){
+            if (context.isDebugMode()) {
               return
             }
             antiShaking().push(() => {

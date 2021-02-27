@@ -7,7 +7,7 @@
  */
 
 import {PinModel} from '../pin/PinModel'
-import {Arrays, assetPinSchema, deepClone} from '@utils'
+import {Arrays, deepClone} from '@utils'
 
 import FrameModel from '../frame/FrameModel'
 
@@ -71,13 +71,7 @@ export class ToplComModel extends ComSeedModel implements I_Node {
 
     if (comDef.inputs) {
       comDef.inputs.forEach(pin => {
-        let schema;
-        try {
-          schema = assetPinSchema(pin)
-        } catch (ex) {
-          console.warn(ex)
-        }
-        this.addInputPin(pin.id, pin.title, schema)
+        this.addInputPin(pin.id, pin.title, void 0)
       })
     }
 
@@ -90,13 +84,7 @@ export class ToplComModel extends ComSeedModel implements I_Node {
 
     if (comDef.outputs) {
       comDef.outputs.forEach(pin => {
-        let schema;
-        try {
-          schema = assetPinSchema(pin)
-        } catch (ex) {
-          console.warn(ex)
-        }
-        this.addOutputPin(pin.id, pin.title, schema)
+        this.addOutputPin(pin.id, pin.title, void 0)
       })
     }
 
@@ -143,17 +131,6 @@ export class ToplComModel extends ComSeedModel implements I_Node {
   //     this.forkedTo.splice(idx,1)
   //   }
   // }
-
-  get inputJoints(): JointModel[] {
-    let rtn = []
-    if (this.frames) {
-      this.frames.forEach(frame => {
-        rtn = rtn.concat(frame.inputJoints)
-      })
-    }
-
-    return rtn
-  }
 
   searchPin(id: string) {
     return Arrays.find(pin => pin.id === id, ...this.getInputsAll(), ...this.getOutputsAll())

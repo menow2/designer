@@ -66,7 +66,7 @@ type BlockDef = {
 function defineBlock(wsCtx: BlocklyContext, def: BlockDef) {
   Blockly.JavaScript[def.name] = function (block) {
     return def.to('js', block, block._data, {
-      logDebug: wsCtx.logDebug,
+      logDebug: `;(typeof(_debugLog)==='function'?_debugLog:function(){})`,
       curFn: wsCtx.curFn,
       getEnvVarScript(varName, ...args) {
         return wsCtx.getEnvVarScript(varName, args)

@@ -63,9 +63,18 @@ class MyContext {
 
   showNavView: boolean = true
 
+  toggleNavView() {
+    this.showNavView = !this.showNavView
+  }
+
   showEditView: boolean = true
 
-  @Ignore
+  toggleEditView() {
+    this.showEditView = !this.showEditView
+  }
+
+  handlersDisabled: boolean = false
+
   listeners
 
   emitLogs: NS_Emits.Logs
@@ -86,6 +95,12 @@ export default function Designer({config, onLoad, onMessage, onEdit}: T_Params) 
     },
     showNav() {
       myContext.showNavView = true
+    },
+    disableHandlers() {
+      myContext.handlersDisabled = true
+    },
+    enableHandlers() {
+      myContext.handlersDisabled = false
     }
   }), {from: 'children', expectTo: 'children'})
 
@@ -263,9 +278,9 @@ export default function Designer({config, onLoad, onMessage, onEdit}: T_Params) 
 
       if (typeof config.keymaps === "function") {
         const maps = config.keymaps()
-        if(typeof maps==='object'){
+        if (typeof maps === 'object') {
           const nms = Object.getOwnPropertyNames(maps)
-          nms.forEach(nm=>{
+          nms.forEach(nm => {
             nkeyMaps[nm] = maps[nm]
           })
         }
@@ -345,37 +360,38 @@ export default function Designer({config, onLoad, onMessage, onEdit}: T_Params) 
 
 function genLoadedObj(designerContext: DesignerContext, myContext: MyContext) {
   return {
-    actions: {
-      navView: {
-        get isTrue() {
-          return myContext.showNavView
+    handlers: [
+      {
+        id: 'navView',
+        get icon() {
+          return myContext.showNavView ? '<' : '>'
         },
+        position: 'middle',
         exe() {
-          if (myContext.showNavView) {
-            myContext.showNavView = false
-          } else {
-            myContext.showNavView = true
-          }
+          myContext.toggleNavView()
         }
       },
-      editView: {
-        get isTrue() {
-          return myContext.showEditView
+      {
+        id: 'editView',
+        get icon() {
+          return myContext.showEditView ? '>' : '<'
         },
+        position: 'middle',
+        style: {marginLeft: 'auto'},
         exe() {
-          if (myContext.showEditView) {
-            myContext.showEditView = false
-          } else {
-            myContext.showEditView = true
-          }
+          myContext.toggleEditView()
         }
       },
-      debugView: {
-        get isEnable() {
-          return true
+      {
+        id: 'switchDD',
+        position: 'right',
+        get style() {
+          return {
+            backgroundColor: '#fcc5c5'
+          }
         },
-        get isTrue() {
-          return !designerContext.isDesnMode()
+        get icon() {
+          return designerContext.isDebugMode() ? '设计' : '调试'
         },
         exe() {
           if (designerContext.isDesnMode()) {
@@ -387,19 +403,16 @@ function genLoadedObj(designerContext: DesignerContext, myContext: MyContext) {
           }
         }
       }
-    },
-    importProject(content) {
-      if (content['pageAry']) {//Project
-        myContext.pageAry = content['pageAry']
-        myContext.emitLogs.info(`导入数据完成.`)
-        return true
-      } else {
-        myContext.emitLogs.error('导入数据失败', '非法的数据格式.')
-      }
-    },
-    importComponent(content) {
-      return importComponent(content)
-    },
+    ].map(hd => {
+      Object.defineProperty(hd, 'disabled', {
+        configurable: true,
+        enumerable: true,
+        get() {
+          return myContext.handlersDisabled
+        }
+      })
+      return hd
+    }),
     dump(): { [p: string]: {} } {
       return {
         pageAry: [{

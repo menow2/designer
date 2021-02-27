@@ -45,33 +45,20 @@ export default function App() {
 }
 
 function TitleBar({loaded}) {
-  let navBtn, editBtn, debugBtn
+  const leftBtns = [], middleBtns = [], rightBtns = []
 
-  if (loaded.actions) {
-    let actions = loaded.actions
-    if (actions.navView) {
-      navBtn = (
-        <button onClick={actions.navView.exe}>
-          {actions.navView.isTrue ? '<' : '>'}
-        </button>
-      )
-    }
-
-    if (actions.editView) {
-      editBtn = (
-        <button style={{float: 'right'}} onClick={actions.editView.exe}>
-          {actions.editView.isTrue ? '>' : '<'}
-        </button>
-      )
-    }
-
-    if (actions.debugView) {
-      debugBtn = (
-        <button style={{backgroundColor: 'red'}}
-                disabled={!actions.debugView.isEnable} onClick={actions.debugView.exe}>
-          {actions.debugView.isTrue ? '编辑' : '调试'}
-        </button>
-      )
+  if (loaded.handlers) {
+    const hary = loaded.handlers
+    if (hary) {
+      hary.forEach(hd => {
+        if (hd.position === 'left') {
+          leftBtns.push(jsxHandler(hd))
+        } else if (hd.position === 'middle') {
+          middleBtns.push(jsxHandler(hd))
+        } else if (hd.position === 'right') {
+          rightBtns.push(jsxHandler(hd))
+        }
+      })
     }
   }
 
@@ -81,18 +68,26 @@ function TitleBar({loaded}) {
         <i>VisualBricks-Demo</i>
       </div>
       <div className={css.btnsLeft}>
-        {navBtn}
+        {leftBtns}
       </div>
       <div className={css.btnsHandlers}>
-
+        {middleBtns}
       </div>
       <div className={css.btnsRight}>
+        {rightBtns}
         <button onClick={() => save(loaded)}>保存</button>
-        {debugBtn}
         {/*<button onClick={publish}>发布</button>*/}
-        {editBtn}
       </div>
     </div>
+  )
+}
+
+function jsxHandler(handler) {
+  const icon = handler.icon
+  const style = Object.assign({opacity: handler.disabled ? 0.2 : 1}, handler.style || {})
+  return (
+    <button disabled={handler.disabled} key={handler.id} onClick={handler.exe}
+            style={style}>{icon}</button>
   )
 }
 

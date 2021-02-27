@@ -155,43 +155,6 @@ export default function BlocklyView({options, value, closeView}:
     }
   })
 
-  /**
-   * @description Blockly块的跨scratch组件,跨标签页黏贴
-   * @author 林紫微
-   * @time 2021/02/20
-   */
-  //复制：记录复制的workspaceId
-  useMemo(()=>{
-    document.addEventListener('copy', function(e){
-      if(!Blockly.clipboardTypeCounts_){
-        localStorage.setItem('blockText', "")
-      }else{
-        if(Blockly.clipboardXml_){
-          const blockText = Blockly.Xml.domToText(Blockly.clipboardXml_)
-          localStorage.setItem('blockText', "")
-          localStorage.setItem('blockText', blockText)
-          Blockly.clipboardXml_ = null
-          Blockly.clipboardSource_ = null
-          Blockly.clipboardTypeCounts_ = null
-        }
-      }
-    })
-  },[])
-  //黏贴
-  useMemo(()=>{
-    document.addEventListener('paste',function(e){
-      e.stopPropagation()
-      const blockText = localStorage.getItem('blockText')
-      if(blockText!==""){
-        const block = Blockly.Xml.textToDom(blockText)
-        const clipdata = block
-        if(clipdata){
-          ctx.workspace.paste(clipdata)
-        }
-      }
-    })
-  },[])
-
   return (
     <div className={css.workspace} onClick={e => ctx.showMenu = false}>
       <div className={css.titleBar}>
@@ -278,40 +241,6 @@ function createVar() {
   }
   addVar(varName)
 }
-
-/**
- * @description 整个workspace导出和导入
- * @author 林紫微
- * @time 2021/02/18
- */
-// function exportAll(){
-//   const {workspace} = observe(BlocklyContext)
-//   try{
-//     const xml = Blockly.Xml.workspaceToDom(workspace)
-//     const exportText = Blockly.Xml.domToText(xml)
-//     localStorage.setItem("exportBlocks", exportText)
-//     message.info("已导出")
-//   }catch(err){
-//     console.log('导出错误: ', err)
-//   }
-  
-// }
-// function imports(){
-//   const {workspace} = observe(BlocklyContext)
-//   const exportText = localStorage.getItem("exportBlocks")
-//   if(!exportText){
-//     console.log("导入：空")
-//   }else{
-//     try{
-//       const xml = Blockly.Xml.textToDom(exportText)
-//       Blockly.Xml.domToWorkspace(xml,workspace)
-//       message.info("导入完成")
-//       localStorage.setItem("exportBlocks","")
-//     }catch(err){
-//       console.log('导入错误: ', err)
-//     }
-//   }
-// }
 
 function switchFn(ctx: BlocklyContext, toFn) {
   const {curFn, workspace, getCurXml, setCurXml, setCurScript} = ctx

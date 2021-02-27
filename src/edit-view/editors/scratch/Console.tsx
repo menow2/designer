@@ -227,7 +227,12 @@ function debug(Debug) {
   const ary = [
     `
       function _debugLog(contentAry,style){
-        const content = contentAry.map(ct=>ct).join(' ');
+        let content
+        if(Array.isArray(contentAry)){
+          content = contentAry.map(ct=>JSON.stringify(ct)).join(' ');
+        }else{
+          content = JSON.stringify(contentAry)
+        }
         Debug.logs.push({content:content,style:style});
       }
     `

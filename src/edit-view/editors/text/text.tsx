@@ -19,14 +19,14 @@ export default function (editConfig): any {
     model.value.set(model.val)
   }, [])
 
-  useEffect(() => {
-    return () => {
-      const val = value.get()
-      if (model.val && val && model.val !== val) {
-        updateVal()
-      }
-    }
-  }, [])
+  // useEffect(() => {
+  //   return () => {
+  //     const val = value.get()
+  //     if (model.val && val && model.val !== val) {
+  //       updateVal()
+  //     }
+  //   }
+  // }, [])
 
   return (
     <div className={css['editor-text']}>

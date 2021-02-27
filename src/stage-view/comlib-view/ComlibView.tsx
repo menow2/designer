@@ -7,15 +7,14 @@
  */
 
 import css from './ComlibView.less';
-import designerStyle from '../../Designer.less'
-import {dragable, evt, observe, useComputed, useObservable, uuid} from 'rxui';
-import {Select, Button} from 'antd'
+import {evt, observe, useComputed, useObservable, uuid} from 'rxui';
+import {Button, Select} from 'antd'
 import PlusOutlined from '@ant-design/icons/PlusOutlined';
 import DownOutlined from '@ant-design/icons/DownOutlined';
 import RightOutlined from '@ant-design/icons/RightOutlined';
-import {ICON_COM_DEFAULT, ComSeedModel, DesignerContext, NS_Emits, T_XGraphComDef} from '@sdk';
+import {ComSeedModel, DesignerContext, NS_Emits, T_XGraphComDef} from '@sdk';
 import StageViewModel from "../StageViewModel";
-import {versionGreaterThan, formatIconPath} from "@utils";
+import {versionGreaterThan} from "@utils";
 import {createPortal} from 'react-dom'
 import React, {ReactChild, useState} from 'React';
 
@@ -338,18 +337,7 @@ function renderComItem(lib, com, myCtx: MyContext) {
            click(lib, com)
          })}>
       <div className={css.title}>
-        {
-          com.icon ? (
-            <div className={css.comIcon}
-                 style={{
-                   backgroundImage: `url(${(com.icon === './icon.png' || !/^(https:)/.test(com.icon))
-                     ? formatIconPath(com.namespace, com.icon) : com.icon})`
-                 }}
-            />
-          ) : (
-            <div className={css.comIconFallback}>{com.title.substr(0, 1)}</div>
-          )
-        }
+        <div className={css.comIconFallback}>{com.title.substr(0, 1)}</div>
         <span className={css.comText}>{com.title}</span>
       </div>
     </div>

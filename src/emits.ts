@@ -49,6 +49,10 @@ export namespace NS_Emits {
 
     showNav: () => boolean
 
+    disableHandlers: () => boolean
+
+    enableHandlers: () => boolean
+
     focusStage: ({outlines}: { outlines: T_Outliner[] }) => boolean
 
     pushInStage: (Function) => void

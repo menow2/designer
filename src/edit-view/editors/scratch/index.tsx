@@ -25,10 +25,13 @@ export default function ({title, value, options}) {
 
   const open = useCallback(() => {
     emitViews.hideNav()
+    emitViews.disableHandlers()
+
     emitViews.pushInStage(() => {
       return <Load title={title} options={options} value={value} closeView={() => {
         emitViews.popInStage()
         emitViews.showNav()
+        emitViews.enableHandlers()
       }}/>
     })
   }, [])

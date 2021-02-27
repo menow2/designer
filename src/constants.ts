@@ -10,6 +10,7 @@ export const ICON_COM_DEFAULT = `https://ss2.baidu.com/6ON1bjeh1BF3odCf/it/u=165
 
 export const SerializeNS = `xg.desn.sdk.`
 
+export const EDITOR_ROOT_SELECTOR = `:root`
 
 export namespace NS_EditorsDefault {
   export const TEXT = 'TEXT'
@@ -20,6 +21,8 @@ export namespace NS_EditorsDefault {
   export const SLIDER = 'SLIDER'
   export const SELECT = 'SELECT'
   export const SWITCH = 'SWITCH'
+
+  export const LIST = 'LIST'
 
   export const COLORPICKER = 'COLORPICKER'
 

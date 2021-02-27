@@ -1,0 +1,96 @@
+@import '../../../theme';
+.editor-list {
+  &__move {
+    cursor: pointer;
+    margin-right: 6px;
+  }
+  &__item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+
+    :global {
+      .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+        border-color: @color-primary;
+        border-right-width: 1px!important;
+      }
+      .ant-select-disabled.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+        color: rgba(0,0,0,.85);
+        background: #fff;
+        cursor: default;
+      }
+    }
+
+    &-dropdown {
+      :global {
+        .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+          background-color: @color-primary !important;
+          color: #fff;
+        }
+        .ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+          background-color: #fa64006e;
+        }
+      }
+    }
+    &-v {
+      width: 100%;
+      flex: 1;
+      border: none;
+      height: 25px;
+      padding: 3px 10px;
+      border-radius: 3px;
+      background-color: #ffffff;
+      box-shadow: 0 0 2px 0 #666666;
+      &::-webkit-input-placeholder {
+        color: #cccccc;
+      }
+    }
+    &-s {
+      :global {
+        .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+          border-color: @color-primary;
+          border-right-width: 1px!important;
+        }
+        .ant-select-disabled.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+          color: rgba(0,0,0,.85);
+          background: #fff;
+          cursor: default;
+        }
+      }
+    }
+    &-equal {
+      // margin:0 6px;
+      // font-size: 20px;
+      // line-height: 16px;
+      // color: #FB6407;
+      margin:0 3px;
+      color: #FB6407;
+    }
+    &-del {
+      width: 20px;
+      height: 20px;
+      color: #FB6407;
+      border: solid 1px #FB6407;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 16px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-left: 6px;
+    }
+  }
+  &__add {
+    cursor: pointer;
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    box-shadow: 0 0 2px 0 #666666;
+  }
+}

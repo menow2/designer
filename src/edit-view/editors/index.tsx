@@ -15,6 +15,8 @@ import Switch from './switch'
 import Slider from './slider'
 import Radio from './radio'
 
+import List from './list'
+
 import ColorPicker from './colorpicker'
 
 import Scratch from "./scratch";
@@ -31,6 +33,8 @@ reg(NS_EditorsDefault.SELECT, Select)
 reg(NS_EditorsDefault.SWITCH, Switch)
 reg(NS_EditorsDefault.SLIDER, Slider)
 reg(NS_EditorsDefault.RADIO, Radio)
+
+reg(NS_EditorsDefault.LIST, List)
 
 reg(NS_EditorsDefault.COLORPICKER, ColorPicker)
 

@@ -8,5 +8,7 @@ tags/*
 .vscode/
 .tmp/
 _scripts/
+_docs/
+_docs-pub/
 dist/
 package-lock.json
