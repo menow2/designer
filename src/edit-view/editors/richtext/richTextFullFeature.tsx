@@ -117,10 +117,6 @@ export default function(editConfig): any {
           readOnly
           value={model.val}
         />
-      {/* <button
-        className={css['editor-rich-text__button']}
-        onClick={() => tmcModalContext.visible = true}
-      >全屏编辑</button> */}
       <Modal
         title="富文本编辑器"
         width="100%"
@@ -259,14 +255,18 @@ function init(selector: any, height: any, isFullScreen: any, setup: any) {
     redo 
     fontsizeselect 
     bold 
+    italic 
+    underline 
+    strikethrough 
     alignleft 
     aligncenter 
     alignright 
-    table 
     forecolor 
     backcolor 
     removeforma 
+    link 
     uploadimage 
+    table 
     hr 
     `;
     // link 
@@ -322,7 +322,7 @@ function init(selector: any, height: any, isFullScreen: any, setup: any) {
     // image
     // fullscreen
     // toolbar: false,
-    fontsize_formats: '12px 14px 16px 18px 20px 24px 36px 48px 56px 72px',
+    fontsize_formats: '12px 14px 16px 18px 20px 22px 24px 26px 28px 30px 32px 34px 36px 38px 40px 42px 46px 48px 50px 56px 60px 72px',
     fullpage_default_font_size: '12px',
     skin: `oxide`,
     theme: 'silver',
