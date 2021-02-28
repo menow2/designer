@@ -1,9 +1,10 @@
 /**
  * MyBricks Opensource
+ * https://mybricks.world
  * This source code is licensed under the MIT license.
  *
  * MyBricks team @2019
- * Mail:mybricks@126.com Wechat:ALJZJZ
+ * mailTo:mybricks@126.com wechatID:ALJZJZ
  */
 
 import css from './Designer.less'
