@@ -1,9 +1,9 @@
 ﻿/**
- * XGraph Opensource
+ * MyBricks Opensource
  * This source code is licensed under the MIT license.
- * 
- * CheMingjun @2019
- * Mail:chemingjun@126.com Wechat:ALJZJZ
+ *
+ * MyBricks team @2019
+ * Mail:mybricks@126.com Wechat:ALJZJZ
  */
 
 import {BaseModel, T_DesignerConfig, T_ExtComDef, T_XGraphComDef, T_XGraphComLib} from '@sdk'
