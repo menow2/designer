@@ -267,7 +267,6 @@ function init(selector: any, height: any, isFullScreen: any, setup: any) {
     link 
     uploadimage 
     table 
-    hr 
     `;
     // link 
     // alignjustify 
