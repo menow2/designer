@@ -1,5 +1,5 @@
 import {getLocationSearch} from "./utils";
-import {DUMP_IN_LS} from "./constants";
+import {LS_DEFAULT_KEY, LS_VB_PRE} from "./constants";
 
 export default {
   comlibAdder(): Promise<any> {//Demo
@@ -57,21 +57,10 @@ function pageLoader(pageId: string) {
   return new Promise((resolve, reject): void => {
     const searchParam = getLocationSearch()
 
-    if (searchParam.length) {
-      let pageData: any = localStorage.getItem(`${DUMP_IN_LS}${searchParam}`);
+    let pageData: any = localStorage
+      .getItem(`${LS_VB_PRE}${searchParam.length ? searchParam : LS_DEFAULT_KEY}`);
 
-      if (!pageData) {
-        const data = localStorage.getItem(DUMP_IN_LS)
-        if (searchParam === 'dev' && data) {
-          pageData = data
-          localStorage.setItem(`${DUMP_IN_LS}dev`, JSON.stringify(data));
-        } else {
-          resolve(void 0);
-        }
-      }
-
-      pageData = JSON.parse(pageData);
-
+    function fn(pageData) {
       const {pageAry} = pageData;
 
       if (pageId === void 0) {
@@ -80,12 +69,18 @@ function pageLoader(pageId: string) {
         const page = pageAry.find(page => page.id === pageId);
         resolve(page ? page : void 0)
       }
-    } else {
-      if (pageId === void 0) {
-        resolve()
+    }
+
+    if (!pageData) {
+      if (!searchParam || !searchParam.length) {
+        import('./data/example.json').then(json => {
+          fn(json.default)
+        })
       } else {
         resolve()
       }
+    } else {
+      fn(JSON.parse(pageData))
     }
   })
 }

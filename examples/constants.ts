@@ -1,1 +1,3 @@
-export const  DUMP_IN_LS: string = '_app_designer_dump_';
+export const  LS_VB_PRE: string = '_mybricks_';
+
+export const LS_DEFAULT_KEY = `example`

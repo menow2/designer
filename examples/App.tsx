@@ -2,18 +2,19 @@ import css from './App.less';
 
 import React, {useCallback} from 'react';
 import {message} from 'antd';
-import Designer from '@visualbricks/designer';
+import Designer from '@mybricks/designer';
+import {useComputed, useObservable} from '@mybricks/rxui';
 
 import designerCfg from './config'
 
 import {getLocationSearch} from "./utils";
 import {useState} from "React";
-import {DUMP_IN_LS} from "./constants";
+import {LS_DEFAULT_KEY, LS_VB_PRE} from "./constants";
 
 export default function App() {
-  const [loaded, setLoaded] = useState({
-    actions: void 0,
-    dump: void 0
+  const loaded = useObservable(class {
+    handlers
+    dump
   })
 
   const onMessage = useCallback((type, msg) => {
@@ -38,34 +39,41 @@ export default function App() {
     <div className={css.mainView}>
       <TitleBar loaded={loaded}/>
       <Designer config={designerCfg}
-                onLoad={loaded => setLoaded(loaded)}
+                onLoad={({handlers, dump}) => {
+                  loaded.handlers = handlers
+                  loaded.dump = dump
+                }}
                 onMessage={onMessage}/>
     </div>
   )
 }
 
 function TitleBar({loaded}) {
-  const leftBtns = [], middleBtns = [], rightBtns = []
+  const [leftBtns,middleBtns,rightBtns] = useComputed(()=>{
+    const leftBtns = [], middleBtns = [], rightBtns = []
 
-  if (loaded.handlers) {
-    const hary = loaded.handlers
-    if (hary) {
-      hary.forEach(hd => {
-        if (hd.position === 'left') {
-          leftBtns.push(jsxHandler(hd))
-        } else if (hd.position === 'middle') {
-          middleBtns.push(jsxHandler(hd))
-        } else if (hd.position === 'right') {
-          rightBtns.push(jsxHandler(hd))
-        }
-      })
+    if (loaded.handlers) {
+      const hary = loaded.handlers
+      if (hary) {
+        hary.forEach(hd => {
+          if (hd.position === 'left') {
+            leftBtns.push(jsxHandler(hd))
+          } else if (hd.position === 'middle') {
+            middleBtns.push(jsxHandler(hd))
+          } else if (hd.position === 'right') {
+            rightBtns.push(jsxHandler(hd))
+          }
+        })
+      }
     }
-  }
+
+    return [leftBtns,middleBtns,rightBtns]
+  })
 
   return (
     <div className={css.titleBar}>
       <div className={css.logo}>
-        <i>VisualBricks-Demo</i>
+        My<i>Bricks</i> <span>通用0代码解决方案</span>
       </div>
       <div className={css.btnsLeft}>
         {leftBtns}
@@ -95,6 +103,6 @@ function save(loaded) {
   const dumpContent = loaded.dump()
 
   const searchParam = getLocationSearch()
-  localStorage.setItem(`${DUMP_IN_LS}${searchParam.length ? getLocationSearch() : 'dev'}`, JSON.stringify(dumpContent));
+  localStorage.setItem(`${LS_VB_PRE}${searchParam.length ? getLocationSearch() : LS_DEFAULT_KEY}`, JSON.stringify(dumpContent));
   message.info('保存完成.')
 }
